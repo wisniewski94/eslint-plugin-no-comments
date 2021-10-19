@@ -16,9 +16,9 @@ npm install eslint-plugin-no-comments --save-dev
 ```js
 // eslintrc.js
 {
-    "plugins": ["eslint-plugin-no-comments"],
+    "plugins": ["no-comments"],
     "rules": {
-        "eslint-plugin-no-comments/disallowComments": "error"
+        "no-comments/disallowComments": "error"
     }
 }
 ```
