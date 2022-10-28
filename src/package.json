@@ -1,5 +1,5 @@
 {
-  "name": "no-comments",
+  "name": "eslint-plugin-no-comments",
   "version": "1.0.7",
   "description": "ESLint plugin to disallow comment blocks",
   "main": "index.js",
@@ -23,9 +23,5 @@
     "no-comments",
     "disallow-comments",
     "eslint-plugin"
-  ],
-  "dependencies": {
-    "eslint": "^8.26.0",
-    "eslint-plugin-no-comments": "file:src"
-  }
+  ]
 }
