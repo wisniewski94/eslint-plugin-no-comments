@@ -4,7 +4,7 @@
   "description": "ESLint plugin to disallow comment blocks",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "cp LICENSE README.MD src/index.js src/package.json dist"
   },
   "author": "Wiktor Wiśniewski <wiktor.wisniewski94@gmail.com>",
   "license": "MIT",
