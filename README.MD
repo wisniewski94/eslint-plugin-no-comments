@@ -26,6 +26,8 @@ npm install eslint-plugin-no-comments --save-dev
         ]
     }
 }
+
+If allow is not specified, all comments will be disallowed except for `eslint` and `global` comments.
 ```
 ## Rule details
 
@@ -56,6 +58,12 @@ const {Text, Image} = require('cool-package') // TO-DO fix vulnerability
 var price1 = 5;
 var price2 = 6;
 var total = price1 + price2;
+```
+
+if allow is specified, e.g.: `["TODO", "FIXME", "NOTE", "DEBUG"]`
+
+```js
+const {Text, Image} = require('cool-package') // TODO fix vulnerability
 ```
 
 ## Author
