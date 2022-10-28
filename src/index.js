@@ -11,7 +11,12 @@ module.exports = {
       "create"(context) {
         const sourceCode = context.getSourceCode();
         function processComment(comment) {
-          const re = /^\s?(global|eslint)/;
+          const options = context.options[0] || {};
+          const allow = options && options.allow || [];
+          let re = /^\s?(global|eslint)/;
+          if (allow.length > 0) {
+            re = new RegExp(`^\\s?(${allow.join("|")})`);
+          }
           if (comment && !re.test(comment.value)) {
             context.report({
               fix(fixer) {
@@ -24,7 +29,7 @@ module.exports = {
           }
         }
         return {
-          Program(node) {
+          Program() {
             const comments = sourceCode.getAllComments();
             comments.forEach(processComment);
           }

@@ -9,6 +9,17 @@ module.exports = {
     },
     "plugins": ["no-comments"],
     "rules": {
-        "no-comments/disallowComments": "error"
+        "no-comments/disallowComments": [
+          "error",
+          {
+            "allow": [
+              "global",
+              "eslint",
+              "TODO",
+              "FIXME",
+              "todo",
+            ]
+          }
+        ]
     }
 };

@@ -11,6 +11,13 @@
   * by the rule
 */
 
+// TODO: This is a todo comment
+// todo: This is a todo comment
+// FIXME: This is a fixme comment
+
+/* TODO: This is a todo comment
+*/
+
 function currentDate() {
   return new Date();
 }
