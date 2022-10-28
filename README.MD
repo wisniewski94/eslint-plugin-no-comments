@@ -26,9 +26,10 @@ npm install eslint-plugin-no-comments --save-dev
         ]
     }
 }
+```
 
 If allow is not specified, all comments will be disallowed except for `eslint` and `global` comments.
-```
+
 ## Rule details
 
 ### Fail
