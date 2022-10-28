@@ -18,6 +18,9 @@
 /* TODO: This is a todo comment
 */
 
+const {Text, Image} = require('cool-package') // TODO fix vulnerability
+
+
 function currentDate() {
   return new Date();
 }
