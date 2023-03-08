@@ -28,7 +28,9 @@ npm install eslint-plugin-no-comments --save-dev
 }
 ```
 
-If allow is not specified, all comments will be disallowed except for `eslint` and `global` comments.
+### [How to add JSDoc to allowlist?](https://github.com/wisniewski94/eslint-plugin-no-comments/issues/7)
+
+If allow is not specified, all comments will be disallowed except for `eslint` and `global` comments. 
 
 ## Rule details
 
