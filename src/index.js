@@ -13,9 +13,10 @@ module.exports = {
         function processComment(comment) {
           const options = context.options[0] || {};
           const allow = options && options.allow || [];
-          let re = /^\s?(global|eslint)/;
+          const caseInsensitive = options && options.allowCaseInsensitive;
+          let re = /^\s?(global|eslint)/i;
           if (allow.length > 0) {
-            re = new RegExp(`^\\s?(${allow.join("|")})`);
+            re = new RegExp(`^\\s?(${allow.join("|")})`, caseInsensitive ? 'i' : undefined);
           }
           if (comment && !re.test(comment.value)) {
             context.report({

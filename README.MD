@@ -69,6 +69,28 @@ if allow is specified, e.g.: `["TODO", "FIXME", "NOTE", "DEBUG"]`
 const {Text, Image} = require('cool-package') // TODO fix vulnerability
 ```
 
+## Optional: Case-insensitive allowlist
+
+You can enable case-insensitive matching for allowed comment patterns by adding `allowCaseInsensitive: true` to your rule configuration:
+
+```js
+// eslintrc.js
+{
+    "plugins": ["no-comments"],
+    "rules": {
+        "no-comments/disallowComments": [
+            "error",
+            {
+                "allow": ["TODO", "FIXME", "NOTE", "DEBUG"],
+                "allowCaseInsensitive": true
+            }
+        ]
+    }
+}
+```
+
+With this option enabled, comments like `TODO`, `todo`, `ToDo`, etc. will all be allowed if `TODO` is in the allow list.
+
 ## Author
 - [Wiktor Wiśniewski](https://wiktorwisniewski.dev)
 
