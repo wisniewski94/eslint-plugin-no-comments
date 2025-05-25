@@ -14,7 +14,7 @@ module.exports = {
           const options = context.options[0] || {};
           const allow = options && options.allow || [];
           const caseInsensitive = options && options.allowCaseInsensitive;
-          let re = /^\s?(global|eslint)/i;
+          let re = new RegExp('^\\s?(global|eslint)', caseInsensitive ? 'i' : '');
           if (allow.length > 0) {
             re = new RegExp(`^\\s?(${allow.join("|")})`, caseInsensitive ? 'i' : undefined);
           }
