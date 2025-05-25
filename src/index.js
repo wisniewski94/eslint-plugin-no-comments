@@ -16,7 +16,7 @@ module.exports = {
           const caseInsensitive = options && options.allowCaseInsensitive;
           let re = new RegExp('^\\s?(global|eslint)', caseInsensitive ? 'i' : '');
           if (allow.length > 0) {
-            re = new RegExp(`^\\s?(${allow.join("|")})`, caseInsensitive ? 'i' : undefined);
+            re = new RegExp(`^\\s?(${allow.join("|")})`, caseInsensitive ? 'i' : '');
           }
           if (comment && !re.test(comment.value)) {
             context.report({
