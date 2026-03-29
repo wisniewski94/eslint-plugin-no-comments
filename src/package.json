@@ -1,19 +1,19 @@
 {
-  "name": "eslint-plugin-no-comments",
-  "version": "1.1.10",
+  "name": "eslint-plugin-no-comments-w4b",
+  "version": "1.1.11",
   "description": "ESLint plugin to disallow comment blocks",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Wiktor Wiśniewski <wiktor.wisniewski94@gmail.com>",
+  "author": "Original: Wiktor Wiśniewski <wiktor.wisniewski94@gmail.com>. Fixes by Colin Hughes <https://github.com/lukkea>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/wisniewski94/eslint-plugin-no-comments"
+    "url": "https://github.com/w4b-co-uk/eslint-plugin-no-comments-w4b"
   },
   "bugs": {
-    "url": "https://github.com/wisniewski94/eslint-plugin-no-comments/issues"
+    "url": "https://github.com/w4b-co-uk/eslint-plugin-no-comments-w4b/issues"
   },
   "keywords": [
     "eslint",

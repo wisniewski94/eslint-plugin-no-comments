@@ -1,40 +1,40 @@
 module.exports = {
-  "rules": {
-    "disallowComments": {
+  rules: {
+    disallowComments: {
       meta: {
-        type: "problem",
+        type: 'problem',
         docs: {
-          description: "Comments are not allowed in this project as they can cause unnecessary noise or leak into production code. Check configuration to see the exceptions from this rule."
+          description:
+            'Comments are not allowed in this project as they can cause unnecessary noise or leak into production code. Check configuration to see the exceptions from this rule.',
         },
-        fixable: "code",
+        fixable: 'code',
       },
-      "create"(context) {
-        const sourceCode = context.getSourceCode();
+      create(context) {
         function processComment(comment) {
           const options = context.options[0] || {};
-          const allow = options && options.allow || [];
+          const allow = (options && options.allow) || [];
           let re = /^\s?(global|eslint)/;
           if (allow.length > 0) {
-            re = new RegExp(`^\\s?(${allow.join("|")})`);
+            re = new RegExp(`^\\s?(${allow.join('|')})`);
           }
           if (comment && !re.test(comment.value)) {
             context.report({
               fix(fixer) {
                 return fixer.remove(comment);
               },
-              "loc": comment.loc,
-              "message": "Comments are forbidden",
-              "node": null
+              loc: comment.loc,
+              message: 'Comments are forbidden',
+              node: null,
             });
           }
         }
         return {
           Program() {
-            const comments = sourceCode.getAllComments();
+            const comments = context.sourceCode.getAllComments();
             comments.forEach(processComment);
-          }
+          },
         };
-      }
-    }
-  }
+      },
+    },
+  },
 };
