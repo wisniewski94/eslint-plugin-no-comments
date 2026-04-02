@@ -10,7 +10,7 @@ module.exports = [
         },
         languageOptions: {
             ecmaVersion: 2021,
-            globals: globals.browser
+            globals: { ...globals.browser, ...globals.node }
         },
         rules: {
             "no-comments/disallowComments": [
