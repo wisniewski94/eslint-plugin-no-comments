@@ -105,3 +105,6 @@ dist
 
 # Snyk cache file
 .dccache
+
+# Claude
+.claude
