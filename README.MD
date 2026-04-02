@@ -77,6 +77,14 @@ if allow is specified, e.g.: `["global", "eslint", "TODO", "FIXME"]`
 const {Text, Image} = require('cool-package') // TODO fix vulnerability
 ```
 
+## Changelog
+
+### 1.2.0
+- Added support for ESLint 9 and ESLint 10
+- Migrated to flat config format (`eslint.config.js`)
+- Added `schema` to rule meta for proper options validation
+- Requires Node.js >= 20.19.0
+
 ## Author
 - [Wiktor Wiśniewski](https://wiktorwisniewski.dev)
 
