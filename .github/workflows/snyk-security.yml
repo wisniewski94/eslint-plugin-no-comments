@@ -25,7 +25,6 @@ jobs:
           node-version: 24
       - name: Install dependencies
         run: npm ci
-        working-directory: src
       - name: Set up Snyk CLI
         uses: snyk/actions/setup@806182742461562b67788a64410098c9d9b96adb
         env:
@@ -36,7 +35,6 @@ jobs:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       - name: Snyk Open Source monitor
         run: snyk monitor
-        working-directory: src
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       - name: Upload result to GitHub Code Scanning
