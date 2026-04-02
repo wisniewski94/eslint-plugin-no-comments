@@ -1,26 +1,61 @@
-// This is a random comment
+const { RuleTester } = require("eslint");
+const { describe, it } = require("node:test");
+const plugin = require("../src/index.js");
 
-// This is another random comment
+const rule = plugin.rules.disallowComments;
+const ruleTester = new RuleTester();
 
-// eslint-disable-next-line no-comments/disallowComments
-/* This is a random comment that shouldn't be removed */
+describe("disallowComments", () => {
+    it("allows eslint directives by default", () => {
+        ruleTester.run("disallowComments", rule, {
+            valid: [
+                { code: "/* eslint-disable */" },
+                { code: "/* eslint-enable no-undef */" },
+                { code: "// eslint-disable-next-line no-unused-vars" },
+                { code: "/* global myVar */" },
+            ],
+            invalid: [],
+        });
+    });
 
-/* this is large comment block
-  * that spans multiple lines
-  * and should be removed
-  * by the rule
-*/
+    it("reports regular comments", () => {
+        ruleTester.run("disallowComments", rule, {
+            valid: [],
+            invalid: [
+                {
+                    code: "// a comment\nconst x = 1;",
+                    errors: [{ message: "Comments are forbidden" }],
+                    output: "\nconst x = 1;",
+                },
+                {
+                    code: "/* block comment */\nconst x = 1;",
+                    errors: [{ message: "Comments are forbidden" }],
+                    output: "\nconst x = 1;",
+                },
+            ],
+        });
+    });
 
-// TODO: This is a todo comment
-// todo: This is a todo comment
-// FIXME: This is a fixme comment
-
-/* TODO: This is a todo comment
-*/
-
-const {Text, Image} = require('cool-package') // TODO fix vulnerability
-
-
-function currentDate() {
-  return new Date();
-}
+    it("respects allow option", () => {
+        ruleTester.run("disallowComments", rule, {
+            valid: [
+                {
+                    code: "// TODO: fix this",
+                    options: [{ allow: ["TODO"] }],
+                },
+                {
+                    code: "// FIXME: broken",
+                    options: [{ allow: ["TODO", "FIXME"] }],
+                },
+            ],
+            invalid: [
+                {
+                    code: "// a comment",
+                    options: [{ allow: ["TODO"] }],
+                    errors: [{ message: "Comments are forbidden" }],
+                    output: "",
+                },
+            ],
+        });
+    });
+});

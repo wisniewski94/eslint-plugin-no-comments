@@ -7,9 +7,22 @@ module.exports = {
           description: "Comments are not allowed in this project as they can cause unnecessary noise or leak into production code. Check configuration to see the exceptions from this rule."
         },
         fixable: "code",
+        schema: [
+          {
+            type: "object",
+            properties: {
+              allow: {
+                type: "array",
+                items: { type: "string" },
+                uniqueItems: true
+              }
+            },
+            additionalProperties: false
+          }
+        ]
       },
       "create"(context) {
-        const sourceCode = context.getSourceCode();
+        const sourceCode = context.sourceCode;
         function processComment(comment) {
           const options = context.options[0] || {};
           const allow = options && options.allow || [];

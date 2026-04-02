@@ -14,23 +14,29 @@ npm install eslint-plugin-no-comments --save-dev
 
 ## Configuration
 ```js
-// eslintrc.js
-{
-    "plugins": ["no-comments"],
-    "rules": {
-        "no-comments/disallowComments": [
-            "error",
-            {
-                "allow": ["TODO", "FIXME", "NOTE", "DEBUG"],
-            }
-        ]
+// eslint.config.js
+import noComments from "eslint-plugin-no-comments";
+
+export default [
+    {
+        plugins: { "no-comments": noComments },
+        rules: {
+            "no-comments/disallowComments": [
+                "error",
+                {
+                    allow: ["global", "eslint", "TODO", "FIXME"],
+                }
+            ]
+        }
     }
-}
+];
 ```
 
 ### [How to add JSDoc to allowlist?](https://github.com/wisniewski94/eslint-plugin-no-comments/issues/7)
 
-If allow is not specified, all comments will be disallowed except for `eslint` and `global` comments. 
+If `allow` is not specified, all comments are disallowed except those starting with `eslint` or `global`.
+
+> **Note:** providing `allow` **replaces** the defaults entirely. If you want to keep `eslint` and `global` comments allowed alongside your own entries, include them explicitly in the array (as shown in the example above).
 
 ## Rule details
 
@@ -63,9 +69,11 @@ var price2 = 6;
 var total = price1 + price2;
 ```
 
-if allow is specified, e.g.: `["TODO", "FIXME", "NOTE", "DEBUG"]`
+if allow is specified, e.g.: `["global", "eslint", "TODO", "FIXME"]`
 
 ```js
+/* global MyClass */
+// eslint-disable-next-line no-unused-vars
 const {Text, Image} = require('cool-package') // TODO fix vulnerability
 ```
 

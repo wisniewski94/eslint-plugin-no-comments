@@ -1,10 +1,15 @@
 {
   "name": "no-comments",
-  "version": "1.1.10",
+  "version": "1.2.0",
   "description": "ESLint plugin to disallow comment blocks",
   "main": "index.js",
   "scripts": {
-    "build": "cp LICENSE README.MD src/index.js src/package.json dist"
+    "build": "cp LICENSE README.MD src/index.js src/package.json dist",
+    "test": "node --test",
+    "lint:example": "eslint examples/basic.js"
+  },
+  "engines": {
+    "node": ">=20.19.0"
   },
   "author": "Wiktor Wiśniewski <wiktor.wisniewski94@gmail.com>",
   "license": "MIT",
@@ -25,7 +30,9 @@
     "eslint-plugin"
   ],
   "dependencies": {
-    "eslint": "^8.26.0",
-    "eslint-plugin-no-comments": "file:src"
+    "@eslint/js": "^10.0.0",
+    "eslint": "^10.0.0",
+    "eslint-plugin-no-comments": "file:src",
+    "globals": "^16.0.0"
   }
 }
